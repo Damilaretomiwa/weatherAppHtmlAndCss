@@ -11,7 +11,9 @@ let defaultDisplay = () => {
                 document.getElementById("temperature").innerText = "temperature: " + weather.main.temp + "°F"
                 document.getElementById("description").innerText = "weather description: " + weather.weather[0].description
                 document.getElementById("country name").innerText = "country: " + weather.sys.country
-            })
+            }).catch(error =>{
+            document.getElementById("country name").innerText = "Bad request gotten";
+        })
     }catch (error){
         document.getElementById("country name").innerText = "Bad request gotten";
     }
@@ -31,11 +33,18 @@ let getIt= ( city) => {
                 document.getElementById("temperature").innerText = "temperature: "+weather.main.temp+"°F"
                 document.getElementById("description").innerText = "weather description: "+weather.weather[0].description
                 document.getElementById("country name").innerText = "country: "+weather.sys.country
-            })
+            }).catch(error =>{
+            document.getElementById("temperature").innerText = ""
+            document.getElementById("description").innerText = ""
+            document.getElementById("country name").innerText = "";
+            document.getElementById("bad_request").innerText = "City not found"
+
+        })
     }catch (error){
         document.getElementById("temperature").innerText = "Bad request gotten"
         document.getElementById("description").innerText = "Bad request gotten"
         document.getElementById("country name").innerText = "Bad request gotten";
+        document.getElementById("bad_request").innerText = "City not found"
     }
 }
 form.addEventListener("submit", (event)=>{
