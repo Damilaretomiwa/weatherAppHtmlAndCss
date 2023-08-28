@@ -1,8 +1,5 @@
 let form = document.getElementById("use_press")
-let weather_forecast = new XMLHttpRequest();
 let key_I = "1dfb6d7b802060dd7cbf86392bbebb2d";
-let wea;
-
 let defaultDisplay = () => {
     try {
         let date = new Date();
@@ -11,7 +8,7 @@ let defaultDisplay = () => {
             {"method": "GET"})
             .then(response => response.json())
             .then(weather => {
-                document.getElementById("temperature").innerText = "temperature: " + weather.main.temp + "F"
+                document.getElementById("temperature").innerText = "temperature: " + weather.main.temp + "°F"
                 document.getElementById("description").innerText = "weather description: " + weather.weather[0].description
                 document.getElementById("country name").innerText = "country: " + weather.sys.country
             })
@@ -31,7 +28,7 @@ let getIt= ( city) => {
             "method" : "GET"
         }).then(response => response.json())
             .then(weather => {
-                document.getElementById("temperature").innerText = "temperature: "+weather.main.temp+"F"
+                document.getElementById("temperature").innerText = "temperature: "+weather.main.temp+"°F"
                 document.getElementById("description").innerText = "weather description: "+weather.weather[0].description
                 document.getElementById("country name").innerText = "country: "+weather.sys.country
             })
